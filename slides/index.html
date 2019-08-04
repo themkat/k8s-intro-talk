@@ -15,7 +15,142 @@
 					<h4>Marie K. Ekeberg</h4>
 				</section>
 
+				<section>
+					<h2>Agenda</h2>
 
+					<ul>
+						<li>What is Kubernetes (k8s)?</li>
+						<li>What problems do k8s solve?</li>
+						<li>k8s concepts</li>
+						<li>Example that shows concepts and more inner workings</li>
+						<li>Recommended resources</li>
+					</ul>
+				</section>
+
+				<!-- TODO: include a disclaimer? So I can mentioned that I'm no expert, but have been experimenting in my spare time... -->
+				
+				<section>
+					<h2>What is Kubernetes (k8s)?</h2>
+
+					<ul>
+						<li>Originally invented at Google, based upon their Borg software</li>
+						<li>Container orchestration</li>
+						<lI>Infrastructure component</lI>
+					</ul>
+				</section>
+				
+				<!-- What it is used for -->
+				<section>
+					<section>
+						<h2>What problems do k8s solve?</h2>
+
+						<p>Solves many issues usually solved manually or by in-house tools and scripts</p>
+					</section>
+					
+					<section>
+						<h2>Handle that a correct number of instances of a service is always available</h2>
+
+						<p>Even when a Node in your Cluster suddenly breaks or is unavailable</p>
+					</section>
+
+					<section>
+						<h2>Gradual rollouts - No downtime</h2>
+					</section>
+
+					<section>
+						<h2>Security: Limiting access to containers outside the cluster</h2>
+					</section>
+
+					<!-- TOOD: include load balancing? Even though that is mostly a cloud provider thing? -->
+				</section>
+
+
+
+				<!-- TODO: teaser? running single container? Executing commands with kubectl exec? kubectl logs? kubectl describe and so on? -->
+
+				<!-- TODO: have a seperate section for kubectl and basic operations? Maybe after the concepts? -->
+				
+
+				<!-- Main concepts -->
+				<section>
+					<!-- TODO: maybe we should take some time to put yaml examples and so on here? -->
+
+					<!-- TODO: should these be covered?
+					   - labels
+					   -configs for services (clusterip, loadbalancer, nodeport)
+					   - DNS entries?
+					   - Liveness and readiness probes?
+					   - Volumes (which is basically the same as for Docker)
+					   -->
+					
+					<section>
+						<h2>k8s concepts</h2>
+
+						<ul>
+							<li>Nodes</li>
+							<li>Pods</li>
+							<li>Deployments</li>
+							<li>Services</li>
+							<li>...</li>
+							<li>Other concepts</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>k8s concepts: Nodes</h2>
+
+						<p>Physical machine or virtual machine in your cluster</p>
+					</section>
+					
+					<section>
+						<h2>k8s concepts: Pods</h2>
+
+						<ul>
+							<li>Lowest unit in k8s</li>
+							<li>Contain one or more containers (usually just one)</li>
+							<li></li>
+						</ul>
+					</section>
+
+					<!-- TODO: maybe have something about replicasets here! -->
+					<section>
+						<h2>k8s concepts: Deployments</h2>
+					</section>
+
+					<section>
+						<h2>k8s concepts: Services</h2>
+					</section>
+
+
+					<!-- mention concepts not mentioned above here.. -->
+					<section>
+						<h2>Other concepts</h2>
+
+						Several other concepts, which include:
+						<ul>
+							<li>Physical volumes / Physical volume claims</li>
+							<li>...</li>
+						</ul>
+					</section>
+					
+
+					<!-- TODO: What other concepts should we cover? Is Endpoints worth covering because of older services outside and the database? Jobs?  -->
+				</section>
+
+
+				<!-- TODO: where should more practical things be covered? Dns, yaml examples and so on. Use an example to cover it? -->
+				
+				
+				<section>
+					<h2>Recommended resources</h2>
+
+					<ul>
+						<li>KataCoda</li>
+						<li>Kubernetes for Developers by Joseph Heck (Packt Pub book)</li>
+						<li>Kubernetes kubectl cheatsheet</li>
+						<li>Docker CLI to kubectl</li>
+					</ul>
+				</section>
 			</div>
 		</div>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/headjs/1.0.3/head.min.js"></script>
