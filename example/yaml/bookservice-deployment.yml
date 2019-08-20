@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bookservice-deployment
+  labels:
+    app: bookservice
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: bookservice
+  template:
+    metadata:
+      labels:
+        app: bookservice
+    spec:
+      containers:
+        - name: bookservice
+          image: themkat/k8sintro-bookservice:1.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+            
