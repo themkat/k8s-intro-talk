@@ -1,4 +1,4 @@
-# k8s-intro-talk
+# Introduction to Kubernetes - talk
 Introduction to Kubernetes (k8s). Here the presentation, as well as all example files are included. I will also include a quick guide on getting k8s running on your computer. 
 
 
@@ -21,7 +21,9 @@ Want to just play around with examples to get a feel for k8s? Start by following
 
 ## Extra resources
 These resources was linked in the talk, and now you can click on them for real :D
+- [Smooth Sailing with Kubernetes (comic)](https://cloud.google.com/kubernetes-engine/kubernetes-comic/). Comic about what Kubernetes is, and what problems it solves. From Google.
 - [KataCoda](https://www.katacoda.com/): Interactive Kubernetes courses and playground. Don't do all! Find out what you want to learn, and pick relevant courses. At least my recommendation.
 - [Kubernetes for Developers by Joseph Heck](https://www.amazon.com/gp/product/B07931YQK3): The book I've used to learn more after experiments at home. Great for learning K8s, even though you might not feel 100 % comfortable with container building in general (Dockerfiles)
 - [kubectl cheatsheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/). Cheatsheet for kubectl, the main tool for interacting with your k8s cluster.
 - [Docker CLI to kubectl](https://kubernetes.io/docs/reference/kubectl/docker-cli-to-kubectl/). Used to the Docker CLI? Want to know how you can do the same operations to your cluster? This is the place!
+- 
