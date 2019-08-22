@@ -80,18 +80,15 @@
 						<h2>Security: Limiting access to containers outside the cluster</h2>
 					</section>
 
-					<!-- TOOD: include load balancing? Even though that is mostly a cloud provider thing? -->
+					<section>
+						<h2>Load-balancing of resources</h2>
+					</section>
+
+					<section>
+						<h2>Easier infrastructure management</h2>
+					</section>
 				</section>
 
-
-
-				<!-- TODO: teaser? running single container? Executing commands with kubectl exec? kubectl logs? kubectl describe and so on? -->
-
-				<!-- TODO: have a seperate section for kubectl and basic operations? Maybe after the concepts? Then we could have an explanation for each of the Kubernetes CLI tools:
-				   - kubeadm - administrating nodes in your kubernetes cluster
-				   - kubelet - node agent. Does operations on each node. Handles containers running in a pod. Usually not touched.
-				   - kubectl - the main tool for working with your cluster (we will briefly look at this)
-				   -->
 				
 
 				<!-- Main concepts -->
@@ -103,13 +100,11 @@
 					   -configs for services (clusterip, loadbalancer, nodeport)
 					   - DNS entries?
 					   - Liveness and readiness probes?
-					   - Volumes (which is basically the same as for Docker)
-						 Ingress?
 						 Namespaces
 					   -->
 					
 					<section>
-						<h2>k8s concepts</h2>
+						<h2>k8s concepts/resources</h2>
 
 						<ul>
 							<li>Nodes</li>
@@ -122,23 +117,33 @@
 					</section>
 
 					<section>
-						<h4>k8s concepts: Nodes</h4>
+						<h4>Nodes</h4>
 
-						<p>Physical machine or virtual machine in your cluster</p>
+						<img src="assets/cluster-node.png" style="border: none; box-shadow: none; height: 40vh" />
+						
+						<p>Physical or virtual machine in your cluster</p>
 					</section>
 					
 					<section>
-						<h4>k8s concepts: Pods</h4>
+						<h4>Pods</h4>
 
+						
+						
 						<ul>
 							<li>Lowest unit in k8s</li>
-							<li>Contain one or more containers (usually just one)</li>
-							<li></li>
+							<li>Contain one or more containers</li>
+							<li>Usually part of deployment config</li>
 						</ul>
 					</section>
 
 					<section>
-						<h4>k8s concepts: Deployments</h4>
+						<h4>Pods II: Probes</h4>
+
+						<!-- TODO: find a clever way of explaining this. Should this maybe come later? -->
+					</section>
+
+					<section>
+						<h4>Deployments</h4>
 
 						<ul>
 							<li>ReplicaSets</li>
@@ -147,7 +152,7 @@
 					</section>
 
 					<section>
-						<h4>k8s concepts: Deployments II: YAML config</h4>
+						<h4>Deployments II: YAML config</h4>
 
 						<pre>
 							<code>
@@ -180,11 +185,18 @@ spec:
 					<!-- TODO: curiousity: What is daemonsets? Maybe? -->
 
 					<section>
-						<h4>k8s concepts: Services</h4>
+						<h4>Services</h4>
+
+						<!-- TODO: some fun image -->
+						
+						<ul>
+							<li>Exposing pods in deployment for access</li>
+							<li>Creates DNS entries used for communication</li>
+						</ul>
 					</section>
 
 					<section>
-						<h4>k8s concepts: Services II: YAML config</h4>
+						<h4>Services II: YAML config</h4>
 
 						<pre>
 							<code>
@@ -209,12 +221,34 @@ spec:
 
 					<!-- TODO: slide about NodePort vs LoadBalancer vs Ingress? -->
 
+
+					<section>
+						<h4>Endpoints</h4>
+
+						<img src="assets/database.png" style="border: none; box-shadow: none; height: 40vh;" />
+						
+						<p>Like a deployment, but describes something outside the cluster</p>
+					</section>
+
+					<section>
+						<h4>Endpoints II: YAML</h4>
+
+						<!-- TODO: YAML -->
+						
+						<p>Like a deployment, a service is needed to expose</p>
+					</section>
+
+					<section>
+						<h4>Namespaces</h4>
+					</section>
+					
 					<!-- mention concepts not mentioned above here.. -->
 					<section>
 						<h2>Other concepts</h2>
 
 						Several other concepts, which include:
 						<ul>
+							<li>Volumes</li>
 							<li>Physical volumes / Physical volume claims</li>
 							<li>...</li>
 						</ul>
@@ -233,15 +267,100 @@ spec:
 					<section>
 						<h4>Side-track: What CLIs are there?</h4>
 
+						<!-- TODO: teaser? running single container? Executing commands with kubectl exec? kubectl logs? kubectl describe and so on? -->
+
+						<!-- TODO: have a seperate section for kubectl and basic operations? Maybe after the concepts? Then we could have an explanation for each of the Kubernetes CLI tools:
+						   - kubeadm - administrating nodes in your kubernetes cluster
+						   - kubelet - node agent. Does operations on each node. Handles containers running in a pod. Usually not touched.
+						   - kubectl - the main tool for working with your cluster (we will briefly look at this)
+						   -->
 						<ul>
 							<li>kubeadm</li>
 							<li>kubelet</li>
 							<li>kubectl</li>
 						</ul>
 					</section>
+
+					<section>
+						<!-- TODO: do this part need to take a bigger role according to the description? -->
+						<h4>Side-track II: Running locally</h4>
+
+						<ul>
+							<li>Docker Desktop</li>
+							<li>Docker for Mac</li>
+							<li>Minikube</li>
+						</ul>
+					</section>
+
+					<section>
+						<h4>Deployment and service without YAML</h4>
+
+						<!-- TODO: make sure the commands are about right. just wrote from memory :P -->
+						<pre>
+							<code>
+user@computername $ kubectl run --image=image:1.0 --replicas=3
+# deployment created
+user@computername $ kubectl expose --port= --name=imgservice --type=NodePort
+							</code>
+						</pre>
+
+						<p>Not used much beyond pet/toy projects</p>
+					</section>
+
+					<section>
+						Scaling deployments
+
+						<pre>
+							<code>
+user@computername $ kubectl scale deployment deployment-name --replicas=6
+							</code>
+						</pre>
+					</section>
+
+					<section>
+						Viewing resource information
+
+						<pre>
+							<code>
+user@computername $ kubectl get all
+user@computername $ kubectl get nodes
+user@computername $ kubectl get pods
+user@computername $ kubectl get deployments
+user@computername $ kubectl get services
+user@computername $ kubectl get service service-name
+user@computername $ kubectl get deployment deployment-name -o yaml
+							</code>
+						</pre>
+					</section>
+					
+					<section>
+						Describing resources
+
+						<pre>
+							<code>
+user@computername $ kubectl describe deployment deployment-name
+							</code>
+						</pre>
+
+						<p>Views all information about image pull status, errors etc.</p>
+					</section>
+					
+					<section>
+						<h4>Applying YAML configs</h4>
+
+						<pre>
+							<code>
+user@computername $ kubectl apply -f file.yml
+							</code>
+						</pre>
+					</section>
+					
+
+<!-- TODO: should the help option be mentioned? -->
 				</section>
 
 
+				<!-- TODO: should examples with Helm be included? maybe have multiple slides here? -->
 				<section>
 					<h2>Useful tools</h2>
 
@@ -261,7 +380,7 @@ spec:
 						<li>Docker CLI to kubectl</li>
 					</ul>
 
-					<p>Also my github repo ;)</p>
+					<p>Also my github repo 4 more! ;)</p>
 				</section>
 			</div>
 		</div>
