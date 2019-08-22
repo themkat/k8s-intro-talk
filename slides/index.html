@@ -1,8 +1,8 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/reveal.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/theme/night.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/lib/css/zenburn.css">
+		<link rel="stylesheet" href="assets/robot-lung.css" />
 
 		<title>Introduction to Kubernetes (k8s)</title>
 	</head>
@@ -11,29 +11,37 @@
 			<div class="slides">
 				
 				<section data-transition="concave" data-background="xxx">
-					<h1>Introduction to Kubernetes (k8s)</h1>
-					<h4>Marie K. Ekeberg</h4>
+					<h2>Introduction to</h2>
+					<img src="assets/kubernetes-logo.png" style="border: none; box-shadow: none;" />
+					<h4>by Marie K. Ekeberg</h4>
 				</section>
-
+				
 				<section>
 					<h2>Agenda</h2>
 
+					<!-- TODO: should prereqs for learning k8s well be included?
+						 TODO: slides on helm and useful tools for k8s. "Helm is the best way to find, share, and use software built for Kubernetes."
+					   -->
 					<ul>
 						<li>What is Kubernetes (k8s)?</li>
 						<li>What problems do k8s solve?</li>
 						<li>k8s concepts</li>
-						<li>Example that shows concepts and more inner workings</li>
+						<li>Using kubectl</li>
+						<li>Useful tools</li>
 						<li>Recommended resources</li>
 					</ul>
 				</section>
 
-				<!-- TODO: include a disclaimer? So I can mentioned that I'm no expert, but have been experimenting in my spare time... -->
+				<section>
+					<h1>Disclaimer!</h1>
+					
+				</section>
 				
 				<section>
 					<h2>What is Kubernetes (k8s)?</h2>
 
 					<ul>
-						<li>Originally invented at Google, based upon their Borg software</li>
+						<li>Invented at Google, based on ideas from Borg</li>
 						<li>Container orchestration</li>
 						<lI>Infrastructure component</lI>
 					</ul>
@@ -46,6 +54,17 @@
 
 						<p>Solves many issues usually solved manually or by in-house tools and scripts</p>
 					</section>
+
+					<!-- Replication and failover, Scalability (both nodes and easy extension of cluster), more?
+						 Resiliency (e.g, if an application is deemed unhealthy (deadlock or other failure that is not recoverable), Kubernetes can restart it for you)
+						 Autoscaling of instances/pods. 
+
+						 Mention advantages with containers in general? (e.g, that the application now contains all settings and runtime information as well)
+						 
+						 Easier setup? Because we don't have to setup everything ourselves?
+
+						 Resource handling (memory/disk full etc.) - can control what is prioritized and moved to other nodes with quality of service settings. 
+					   -->
 					
 					<section>
 						<h2>Handle that a correct number of instances of a service is always available</h2>
@@ -85,6 +104,8 @@
 					   - DNS entries?
 					   - Liveness and readiness probes?
 					   - Volumes (which is basically the same as for Docker)
+						 Ingress?
+						 Namespaces
 					   -->
 					
 					<section>
@@ -101,13 +122,13 @@
 					</section>
 
 					<section>
-						<h2>k8s concepts: Nodes</h2>
+						<h4>k8s concepts: Nodes</h4>
 
 						<p>Physical machine or virtual machine in your cluster</p>
 					</section>
 					
 					<section>
-						<h2>k8s concepts: Pods</h2>
+						<h4>k8s concepts: Pods</h4>
 
 						<ul>
 							<li>Lowest unit in k8s</li>
@@ -116,15 +137,77 @@
 						</ul>
 					</section>
 
-					<!-- TODO: maybe have something about replicasets here! -->
 					<section>
-						<h2>k8s concepts: Deployments</h2>
+						<h4>k8s concepts: Deployments</h4>
+
+						<ul>
+							<li>ReplicaSets</li>
+							<li>Main resource for content in cluster</li>
+						</ul>
 					</section>
 
 					<section>
-						<h2>k8s concepts: Services</h2>
+						<h4>k8s concepts: Deployments II: YAML config</h4>
+
+						<pre>
+							<code>
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bookservice-deployment
+  labels:
+    app: bookservice
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: bookservice
+  template:
+    metadata:
+      labels:
+        app: bookservice
+    spec:
+      containers:
+        - name: bookservice
+          image: themkat/k8sintro-bookservice:1.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+							</code>
+						</pre>
 					</section>
 
+					<!-- TODO: curiousity: What is daemonsets? Maybe? -->
+
+					<section>
+						<h4>k8s concepts: Services</h4>
+					</section>
+
+					<section>
+						<h4>k8s concepts: Services II: YAML config</h4>
+
+						<pre>
+							<code>
+apiVersion: v1
+kind: Service
+metadata:
+  name: bookservice-service
+spec:
+  selector:
+    app: bookservice
+  type: ClusterIP
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+
+							</code>
+						</pre>
+					</section>
+
+					<!-- TODO: Ingress? -->
+
+					<!-- TODO: slide about NodePort vs LoadBalancer vs Ingress? -->
 
 					<!-- mention concepts not mentioned above here.. -->
 					<section>
@@ -142,18 +225,43 @@
 				</section>
 
 
-				<!-- TODO: where should more practical things be covered? Dns, yaml examples and so on. Use an example to cover it? -->
-				
+				<section>
+					<section>
+						<h2>Using kubectl - the Kubernetes Control CLI</h2>
+					</section>
+
+					<section>
+						<h4>Side-track: What CLIs are there?</h4>
+
+						<ul>
+							<li>kubeadm</li>
+							<li>kubelet</li>
+							<li>kubectl</li>
+						</ul>
+					</section>
+				</section>
+
+
+				<section>
+					<h2>Useful tools</h2>
+
+					<ul>
+						<li>Helm</li>
+						
+					</ul>
+				</section>
 				
 				<section>
 					<h2>Recommended resources</h2>
 
 					<ul>
 						<li>KataCoda</li>
-						<li>Kubernetes for Developers by Joseph Heck (Packt Pub book)</li>
+						<li>Kubernetes for Developers by Joseph Heck</li>
 						<li>Kubernetes kubectl cheatsheet</li>
 						<li>Docker CLI to kubectl</li>
 					</ul>
+
+					<p>Also my github repo ;)</p>
 				</section>
 			</div>
 		</div>
