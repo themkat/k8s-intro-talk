@@ -15,6 +15,10 @@
 					<img src="assets/kubernetes-logo.png" style="border: none; box-shadow: none;" />
 					<h4>by Marie K. Ekeberg</h4>
 				</section>
+
+				<!-- TODO: put this into the resources somehow:
+					 https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.15/
+				   -->
 				
 				<section>
 					<h2>Agenda</h2>
@@ -233,13 +237,56 @@ spec:
 					<section>
 						<h4>Endpoints II: YAML</h4>
 
-						<!-- TODO: YAML -->
+						<pre>
+							<code>
+apiVersion: v1
+kind: Endpoint
+metadata:
+  name: Database
+subsets:
+  addresses:
+    - ip: 54.344.3.2
+  ports:
+    - port: 1540
+
+							</code>
+						</pre>
 						
 						<p>Like a deployment, a service is needed to expose</p>
 					</section>
 
 					<section>
 						<h4>Namespaces</h4>
+
+						<ul>
+							<li>No namespace specified = Default namespace</li>
+							<li>"Group" resources</li>
+						</ul>
+					</section>
+
+					<section>
+						<h4>Namespaces II: YAML</h4>
+
+						<pre>
+							<code>
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: MyNamespace
+							</code>
+						</pre>
+
+						<p>Can also be created in CLI</p>
+					</section>
+
+					<section>
+						<h4>Jobs</h4>			
+						
+						<ul>
+							<li>Batch jobs</li>
+							<li>CronJob</li>
+							<li>Handles restartability and more</li>
+						</ul>
 					</section>
 					
 					<!-- mention concepts not mentioned above here.. -->
@@ -250,12 +297,21 @@ spec:
 						<ul>
 							<li>Volumes</li>
 							<li>Physical volumes / Physical volume claims</li>
-							<li>...</li>
+							<li>ConfigMaps</li>
+							<li>Secret</li>
+							<li>...and more!</li>
 						</ul>
 					</section>
-					
 
-					<!-- TODO: What other concepts should we cover? Is Endpoints worth covering because of older services outside and the database? Jobs?  -->
+					<section>
+						<h2>So many resources :(</h2>
+
+						<p class="fragment">Most important:</p>
+						<ul class="fragment">
+							<li>Deployments</li>
+							<li>Services</li>
+						</ul>
+					</section>
 				</section>
 
 
@@ -327,7 +383,9 @@ user@computername $ kubectl get nodes
 user@computername $ kubectl get pods
 user@computername $ kubectl get deployments
 user@computername $ kubectl get services
+user@computername $ kubectl get services --namespace MyNamespace
 user@computername $ kubectl get service service-name
+user@computername $ kubectl get namespace
 user@computername $ kubectl get deployment deployment-name -o yaml
 							</code>
 						</pre>
@@ -351,6 +409,7 @@ user@computername $ kubectl describe deployment deployment-name
 						<pre>
 							<code>
 user@computername $ kubectl apply -f file.yml
+user@computername $ kubectl apply -f file.yml --namespace MyNamespace
 							</code>
 						</pre>
 					</section>
