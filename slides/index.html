@@ -49,6 +49,7 @@
 						<li>Invented at Google, based on ideas from Borg</li>
 						<li>Container orchestration</li>
 						<lI>Infrastructure component</lI>
+						<li>Greek for helmsman or pilot</li>
 					</ul>
 				</section>
 				
@@ -182,7 +183,7 @@
 					<section>
 						<h4>Deployments II: YAML config</h4>
 
-						<pre>
+						<pre style="box-shadow: none;">
 							<code>
 apiVersion: apps/v1
 kind: Deployment
@@ -233,7 +234,7 @@ spec:
 					<section>
 						<h4>Services II: YAML config</h4>
 
-						<pre>
+						<pre style="box-shadow: none;">
 							<code>
 apiVersion: v1
 kind: Service
@@ -264,7 +265,7 @@ spec:
 					<section>
 						<h4>Ingress II: YAML</h4>
 
-						<pre>
+						<pre style="box-shadow: none;">
 							<code>
 apiVersion: networking/v1beta
 kind: Ingress
@@ -298,7 +299,7 @@ spec:
 					<section>
 						<h4>Endpoints II: YAML</h4>
 
-						<pre>
+						<pre style="box-shadow: none;">
 							<code>
 apiVersion: v1
 kind: Endpoint
@@ -328,7 +329,7 @@ subsets:
 					<section>
 						<h4>Namespaces II: YAML</h4>
 
-						<pre>
+						<pre style="box-shadow: none;">
 							<code>
 apiVersion: v1
 kind: Namespace
@@ -413,7 +414,7 @@ metadata:
 						<h4>Deployment and service without YAML</h4>
 
 						<!-- TODO: make sure the commands are about right. just wrote from memory :P -->
-						<pre>
+						<pre style="box-shadow: none;">
 							<code class="console">
 kubectl run --image=image:1.0 --replicas=3
 # deployment created
@@ -427,7 +428,7 @@ kubectl expose --port= --name=imgservice --type=NodePort
 					<section>
 						Scaling deployments
 
-						<pre>
+						<pre style="box-shadow: none;">
 							<code class="console">
 kubectl scale deployment deployment-name --replicas=6
 							</code>
@@ -437,7 +438,7 @@ kubectl scale deployment deployment-name --replicas=6
 					<section>
 						Viewing resource information
 
-						<pre>
+						<pre style="box-shadow: none;">
 							<code class="console">
 kubectl get all
 kubectl get nodes
@@ -455,7 +456,7 @@ kubectl get deployment deployment-name -o yaml
 					<section>
 						Describing resources
 
-						<pre>
+						<pre style="box-shadow: none;">
 							<code class="console">
 kubectl describe deployment deployment-name
 							</code>
@@ -467,7 +468,7 @@ kubectl describe deployment deployment-name
 					<section>
 						Getting logs from pods
 
-						<pre>
+						<pre style="box-shadow: none;">
 							<code class="console">
 kubectl logs podname
 							</code>
@@ -477,7 +478,7 @@ kubectl logs podname
 					<section>
 						<h4>Applying YAML configs</h4>
 
-						<pre>
+						<pre style="box-shadow: none;">
 							<code class="console">
 kubectl apply -f file.yml
 kubectl apply -f file.yml --namespace MyNamespace
