@@ -220,6 +220,13 @@ spec:
 						<ul>
 							<li>Exposing pods in deployment for access</li>
 							<li>Creates DNS entries used for communication</li>
+							<li>3 types:
+								<ul>
+									<li>ClusterIP</li>
+									<li>NodePort</li>
+									<li>LoadBalancer</li>
+								</ul>
+							</li>
 						</ul>
 					</section>
 
@@ -246,9 +253,39 @@ spec:
 					</section>
 
 					<!-- TODO: Ingress? -->
+					<section>
+						<h4>Ingress</h4>
+
+						<ul>
+							<li>Exposes services outside cluster</li>
+						</ul>
+					</section>
+
+					<section>
+						<h4>Ingress II: YAML</h4>
+
+						<pre>
+							<code>
+apiVersion: networking/v1beta
+kind: Ingress
+metadata:
+  name: frontend-ingress
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /
+            backend:
+              serviceName: frontend-service
+              servicePort: 80
+							</code>
+						</pre>
+					</section>
 
 					<!-- TODO: slide about NodePort vs LoadBalancer vs Ingress? -->
-
+					<section>
+						<h4>NodePort vs LoadBalancer vs Ingress</h4>
+					</section>
 
 					<section>
 						<h4>Endpoints</h4>
