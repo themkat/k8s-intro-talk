@@ -353,10 +353,10 @@ metadata:
 
 						<!-- TODO: make sure the commands are about right. just wrote from memory :P -->
 						<pre>
-							<code>
-user@computername $ kubectl run --image=image:1.0 --replicas=3
+							<code class="console">
+kubectl run --image=image:1.0 --replicas=3
 # deployment created
-user@computername $ kubectl expose --port= --name=imgservice --type=NodePort
+kubectl expose --port= --name=imgservice --type=NodePort
 							</code>
 						</pre>
 
@@ -367,8 +367,8 @@ user@computername $ kubectl expose --port= --name=imgservice --type=NodePort
 						Scaling deployments
 
 						<pre>
-							<code>
-user@computername $ kubectl scale deployment deployment-name --replicas=6
+							<code class="console">
+kubectl scale deployment deployment-name --replicas=6
 							</code>
 						</pre>
 					</section>
@@ -377,16 +377,16 @@ user@computername $ kubectl scale deployment deployment-name --replicas=6
 						Viewing resource information
 
 						<pre>
-							<code>
-user@computername $ kubectl get all
-user@computername $ kubectl get nodes
-user@computername $ kubectl get pods
-user@computername $ kubectl get deployments
-user@computername $ kubectl get services
-user@computername $ kubectl get services --namespace MyNamespace
-user@computername $ kubectl get service service-name
-user@computername $ kubectl get namespace
-user@computername $ kubectl get deployment deployment-name -o yaml
+							<code class="console">
+kubectl get all
+kubectl get nodes
+kubectl get pods
+kubectl get deployments
+kubectl get services
+kubectl get services --namespace MyNamespace
+kubectl get service service-name
+kubectl get namespace
+kubectl get deployment deployment-name -o yaml
 							</code>
 						</pre>
 					</section>
@@ -395,8 +395,8 @@ user@computername $ kubectl get deployment deployment-name -o yaml
 						Describing resources
 
 						<pre>
-							<code>
-user@computername $ kubectl describe deployment deployment-name
+							<code class="console">
+kubectl describe deployment deployment-name
 							</code>
 						</pre>
 
@@ -407,8 +407,8 @@ user@computername $ kubectl describe deployment deployment-name
 						Getting logs from pods
 
 						<pre>
-							<code>
-user@computername $ kubectl logs podname
+							<code class="console">
+kubectl logs podname
 							</code>
 						</pre>
 					</section>
@@ -417,9 +417,9 @@ user@computername $ kubectl logs podname
 						<h4>Applying YAML configs</h4>
 
 						<pre>
-							<code>
-user@computername $ kubectl apply -f file.yml
-user@computername $ kubectl apply -f file.yml --namespace MyNamespace
+							<code class="console">
+kubectl apply -f file.yml
+kubectl apply -f file.yml --namespace MyNamespace
 							</code>
 						</pre>
 					</section>
