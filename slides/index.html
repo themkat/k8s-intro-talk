@@ -162,8 +162,7 @@
 
 					<section>
 						<h4>Pods II: Probes</h4>
-
-						<!-- TODO: find a clever way of explaining this. Should this maybe come later? -->
+						
 						<ul>
 							<li>livenessProbe and readinessProbe</li>
 							<li>Helps k8s see if a pod is ready to serve!</li>
@@ -253,7 +252,6 @@ spec:
 						</pre>
 					</section>
 
-					<!-- TODO: Ingress? -->
 					<section>
 						<h4>Ingress</h4>
 
@@ -445,6 +443,7 @@ kubectl scale deployment deployment-name --replicas=6
 kubectl get all
 kubectl get nodes
 kubectl get pods
+kubectl get pods -w
 kubectl get deployments
 kubectl get services
 kubectl get services --namespace MyNamespace
