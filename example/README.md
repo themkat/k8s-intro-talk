@@ -103,13 +103,8 @@ Don't know what to do? Try some of the following examples!
 
 -- TODO: should the Ingress part be included here?
 
-### If using Minikube: Change service type to `LoadBalancer` in `bookservice-service.yml`
-Minikube supports the `LoadBalancer` type, which will actually create an external IP for us...
-
--- TODO: write more!
 
 
 ### Add simple metrics with Prometheus and ...
 
 
-### Adding logging
