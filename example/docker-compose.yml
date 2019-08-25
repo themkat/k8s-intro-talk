@@ -4,8 +4,6 @@ services:
     image: themkat/k8sintro-bookservice:1.0
     ports:
       - "8080:8080"
-    environment:
-      - SPRING_PROFILES_ACTIVE=container
   database:
     image: mongo:3.4.22-xenial
     ports:
