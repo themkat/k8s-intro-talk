@@ -2,9 +2,6 @@
 Introduction to Kubernetes (k8s). Here the presentation, as well as all example files are included. I will also include a quick guide on getting k8s running on your computer. 
 
 
-... include maybe some examples, how to run them etc. ...
-
-
 ## About the folders
 - *examples*: Example code you can play around with
 - *slides*: The slides used in the presentation
@@ -16,7 +13,7 @@ Introduction to Kubernetes (k8s). Here the presentation, as well as all example 
 Depending on your background, there may be several different next steps. If you are not comfortable with bash and Unix based command lines (like in GNU/Linux), I recommend you to learn more about that first. Docker (and container creation and usage in general) require some knowledge on GNU/Linux and the command line. Already feel comfortable with basic command line usage? Start by creating Dockerfiles. 
 
 
-Want to just play around with examples to get a feel for k8s? Start by following the steps to set up K8s on your machine, and then follow the guide to run the examples. 
+[Want to just play around with examples to get a feel for k8s?](example/README.md) 
 
 
 ## Extra resources
