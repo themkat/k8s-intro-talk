@@ -29,6 +29,7 @@ Now you can build your project like normal. You will need to have a mongodb data
 ```
 docker run --name mongodb-container -d -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=root -e MONGO_INITDB_ROOT_PASSWORD=password mongo:3.4.22-xenial
 ```
+(you could also have used `docker-compose up -d database` and `docker-compose down` to shut down)
 
 Once you are done, you can terminate and delete it with:
 ```
