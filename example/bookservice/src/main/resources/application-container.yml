@@ -1,0 +1,6 @@
+# using root user for simplicity. Okay in toy example, but one should never do this :P 
+spring:
+  data:
+    mongodb:
+      database: bookdb
+      uri: mongodb://root:password@database
