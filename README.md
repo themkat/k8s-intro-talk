@@ -26,4 +26,4 @@ These resources was linked in the talk, and now you can click on them for real :
 - [Kubernetes for Developers by Joseph Heck](https://www.amazon.com/gp/product/B07931YQK3): The book I've used to learn more after experiments at home. Great for learning K8s, even though you might not feel 100 % comfortable with container building in general (Dockerfiles)
 - [kubectl cheatsheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/). Cheatsheet for kubectl, the main tool for interacting with your k8s cluster.
 - [Docker CLI to kubectl](https://kubernetes.io/docs/reference/kubectl/docker-cli-to-kubectl/). Used to the Docker CLI? Want to know how you can do the same operations to your cluster? This is the place!
-- 
+- [NodePort vs LoadBalancer vs Ingress](https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0). Need a refresher on the differences between NodePort, LoadBalancer and Ingress? Look no further!
