@@ -1,0 +1,15 @@
+version: '3'
+services:
+  bookservice:
+    image: themkat/k8sintro-bookservice:1.0
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=container
+  database:
+    image: mongo:3.4.22-xenial
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=password
