@@ -4,7 +4,8 @@ Here is the examples that are shown briefly in the presentation. Feel free to pl
 
 
 ## About the database config
-...
+In this example the database is just a single pod in our cluster (or a container if you simply use docker-compose). This is not reliable as pods may suddenly be restarted. Without any data replication (which we don't have here for simplicity), the data would be lost. For MongoDB, data replication would be quite easy as the database is simply a file. So in theory, all that is needed is to use a volume. A lot of people deploying to Kubernetes clusters instead choose not to deploy the database in their cluster to avoid losing data (see description of `Endpoint` in the slides if you are curious on data outside the cluster). If you are curious about the challenges of running datastores in containers, you should [watch the talk "Challenges of running data stores in containers" by Johannes Unterstein from JavaZone 2018](https://2018.javazone.no/program/8f6ca5b7-2f94-47ea-a6d4-ed6a5ff6d88e).
+
 
 
 
@@ -13,22 +14,29 @@ Make sure you follow the guide to install your variant of a local Kubernetes clu
 
 
 ## Docker compose?
+You may wonder why the `docker-compose.yml` file is included? Does it relate to Kubernetes in any way? While there are small similarities like the DNS entries created, it is not related to Kubernetes. It is kept here for you to see the differences (and another reason if you read the next paragraphs!). 
 
 
-Just want to run the server in IntelliJ or your IDE? Just run the server using:
-docker run -d -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=root -e MONGO_INITDB_ROOT_PASSWORD=password mongo:3.4.22-xenial
-
-or `docker-compose up -d database`
-
-This can be run without a Kubernetes cluster, and is included just to see the same setup in a compose file...
+If you have built the image (by doing the steps in the below "Building Docker image" heading in the "Running the examples on a K8s cluster" section, but skipping the Minikube specifics(!)), you can run the compose file using `docker-compose up -d` (just like you are used to). The same goes for shutting it down: `docker-compose down`. So nothing new! 
 
 
-But! There is a way to run this compose file directly in your Kubernetes cluster. 
+But! There is a way to run this compose file directly in your Kubernetes cluster using a tool called `kompose`! To install `kompose`, you can follow [the instructions on their website](http://kompose.io/). Kompose created Kubernetes resources based upon your `docker-compose.yml` entries! It may not be suitable for production use, but it is a fun and quick way to deploy resources to your Kubernetes cluster! To start, you simply use the command (in the same folder as a `docker-compose.yml` file):
+```
+kompose up
+```
 
-exposing using nodeport after using kompose: 
+When it's running, it will print all the resources it creates. Now you can play around with it! Try some of the commands from the slides! You also may want to change the service type so you can actually see the frontend in your browser? To do this, you can use the `kubectl patch` command. Change the service to `NodePort` by using:
+```
 kubectl patch svc bookservice -p '{"spec": {"type": "NodePort"}}'
+```
+
+> `kubectl patch` simply "patches" a resource. You give in the part of the definition you want to change, and it will change those parts of the configurations in that resource.
 
 
+When you are done, simply type:
+```
+kompose down
+```
 
 
 
