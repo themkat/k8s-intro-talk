@@ -101,9 +101,14 @@ kubectl delete deployment bookservice-deployment
 ## Exercises
 Don't know what to do? Try some of the following examples!
 
--- TODO: should the Ingress part be included here?
+### Separating the frontend and backend
+Usually, we don't want to bundle both the frontend and backend in the same Docker image. This is done for simplicity here. Some of you may be thinking; "Kubernetes services has DNS entries, why not just use those to communicate with the backend?". This assumption turns out to not work when we have a pure JavaScript application. JavaScript applications run in your browser after all, not in the cluster (they are only served to your browser from the cluster)! There are several ways to solve this. The simplest is to just create a new server that only serves the webpage and has a proxy to the backend server (either a Spring Boot application or something else). Since the server is running inside your cluster, then the proxy would simply forward the requests you do on the webpage. If you are using Spring Boot, then creating a proxy in the frontend server is easy. Either set up a `RESTTemplate` proxy yourself, or use a [library like Zuul Proxy](https://www.baeldung.com/spring-rest-with-zuul-proxy) (there is no `RESTTemplate`, only Zuul... </EndOfHorribleJoke>).
 
 
+Other ways include experimenting with Ingresses. Both of these options are used in production environments by companies all over the globe. 
+
+
+Maybe you also have another solution on your mind? :) Feel free to share it!
 
 ### Add simple metrics with Prometheus and ...
 
