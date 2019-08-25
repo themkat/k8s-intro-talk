@@ -18,6 +18,7 @@ Depending on your background, there may be several different next steps. If you 
 
 ## Extra resources
 These resources was linked in the talk, and now you can click on them for real :D
+- [kubectl API docs](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.15/). API docs for `kubectl`. Make sure you are checking the docs for the same version of Kubernetes that you are using. 
 - [Smooth Sailing with Kubernetes (comic)](https://cloud.google.com/kubernetes-engine/kubernetes-comic/). Comic about what Kubernetes is, and what problems it solves. From Google.
 - [KataCoda](https://www.katacoda.com/): Interactive Kubernetes courses and playground. Don't do all! Find out what you want to learn, and pick relevant courses. At least my recommendation.
 - [Kubernetes for Developers by Joseph Heck](https://www.amazon.com/gp/product/B07931YQK3): The book I've used to learn more after experiments at home. Great for learning K8s, even though you might not feel 100 % comfortable with container building in general (Dockerfiles)
