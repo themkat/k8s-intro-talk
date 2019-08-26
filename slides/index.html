@@ -411,12 +411,11 @@ metadata:
 					<section>
 						<h4>Deployment and service without YAML</h4>
 
-						<!-- TODO: make sure the commands are about right. just wrote from memory :P -->
 						<pre style="box-shadow: none;">
 							<code class="console">
-kubectl run --image=image:1.0 --replicas=3
+kubectl run --image=image:1.0 -port=8080 mydeployment 
 # deployment created
-kubectl expose --port= --name=imgservice --type=NodePort
+kubectl expose deployment mydeployment --port=8080 --name=imgservice --type=NodePort
 							</code>
 						</pre>
 
