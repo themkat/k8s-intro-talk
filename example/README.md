@@ -110,6 +110,21 @@ Other ways include experimenting with Ingresses. Both of these options are used 
 
 Maybe you also have another solution on your mind? :) Feel free to share it!
 
+
+
+### Creating an Ingress to get an external IP
+> *MiniKube and Docker Kubernetes:* You will in your local setup not get an external IP. This is because Ingress still needs some external program to do this (Google Cloud uses a loadbalancer for this).
+
+Ingresses are another way of exposing your service outside your cluster. Like we mentioned in the slides, it can be thought of as a smart-router (i.e, we set some paths that should route to our services). Take a look at `yaml/bookservice-ingress.yml` to see how an ingress can be defined. When you are ready (and after deploying all the above!), apply the yaml file:
+```
+kubectl apply -f yaml/bookservice-ingress.yml
+```
+
+Now all you have to do is wait a short time. This should not take long with Minikube, but may take more time if you use a cloud platform. To get the ip to connect to, use the command `minikube ip`. Now you can navigate to that IP, and can use the routes you described in your ingress! Pretty nifty, right?
+
+> *Ingress routes*: You can route one Ingress resource to many different services. Example: Let's say we have a service products and a service customerdata. Then we can route these services to their own path! Maybe you want products to be on the /products path of your url, and customerdata to be on the /customers path? Then you can do it with Inrgess! If you want one IP for each service, you can use a `LoadBalancer` instead. 
+
+
 ### Add simple metrics with Prometheus and ...
 
 
