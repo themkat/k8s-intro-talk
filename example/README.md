@@ -125,6 +125,8 @@ Now all you have to do is wait a short time. This should not take long with Mini
 > *Ingress routes*: You can route one Ingress resource to many different services. Example: Let's say we have a service products and a service customerdata. Then we can route these services to their own path! Maybe you want products to be on the /products path of your url, and customerdata to be on the /customers path? Then you can do it with Inrgess! If you want one IP for each service, you can use a `LoadBalancer` instead. 
 
 
-### Add simple metrics with Prometheus and ...
+### Add simple metrics with Prometheus and Grafana (Heapster)
+If you use Minikube, you can get metrics very easy! Just run `minikube addons enable heapster`, and Minikube will deploy Prometheus and Grafana to your cluster. From there on out, Prometheus will collect metrics that you can view from Grafana. To look at the metrics, you can use `minikube service list` and find the URL for Grafana. Now try to do some requests and see how CPU usage and other metrics change!
 
 
+Want to read more? For logging or other features, take a look at the "Monitoring and Metrics" chapter in the [Kubernetes for Developers book](https://www.amazon.com/gp/product/B07931YQK3). 
