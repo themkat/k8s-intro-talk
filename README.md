@@ -2,6 +2,9 @@
 Introduction to Kubernetes (k8s). Here the presentation, as well as all example files are included. I will also include a quick guide on getting k8s running on your computer. 
 
 
+Kubernetes logo and Helm boat logo are property of Cloud Native Computing Foundation. Some images used for explanation purposes are public domain images. 
+
+
 ## About the folders
 - *examples*: Example code you can play around with
 - *slides*: The slides used in the presentation
