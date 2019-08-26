@@ -284,9 +284,23 @@ spec:
 						</pre>
 					</section>
 
-					<!-- TODO: slide about NodePort vs LoadBalancer vs Ingress? -->
 					<section>
 						<h4>NodePort vs LoadBalancer vs Ingress</h4>
+
+						<ul>
+							<li>NodePort: Simply open a port</li>
+							<li>LoadBalancer: External load balancer
+								<ul>
+									<li>One servie = One IP/URL</li>
+								</ul>
+							</li>
+							<li>Ingress: Smart router
+								<ul>
+									<li>Many services = same IP/URL</li>
+									<li>Different paths (e.g, /customers, /products etc.)</li>
+								</ul>
+							</li>
+						</ul>
 					</section>
 
 					<section>
